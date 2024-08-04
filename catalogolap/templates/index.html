@@ -1,0 +1,38 @@
+<!-- Archivo: catalogolap/templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Laptops</title>
+    <!-- Carga el módulo para manejar archivos estáticos -->
+    {% load static %}
+    <!-- Enlaza el archivo CSS para estilos -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo del catálogo, cargado desde la carpeta 'static' -->
+        <img src="{% static 'logo_laptops.png' %}" alt="Logotipo" class="logo">
+
+        <!-- Botones de navegación para las diferentes secciones del catálogo -->
+        <div class="buttons">
+            <button>Categorías</button>
+            <button>Productos</button>
+            <button>Clientes</button>
+            <button>Compras</button>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!-- Archivo: catalogolap/templates/index.html -->
+
+<!-- 
+    Esta plantilla HTML representa la página principal del catálogo de laptops.
+    Su propósito es proporcionar una interfaz de inicio con un logotipo y botones de navegación
+    para acceder a diferentes secciones del catálogo: Categorías, Productos, Clientes y Compras.
+    La plantilla se renderiza desde la vista 'index' en el archivo 'views.py' 
+    y utiliza la configuración de archivos estáticos definida en 'settings.py'. 

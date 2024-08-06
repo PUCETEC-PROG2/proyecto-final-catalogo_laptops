@@ -1,0 +1,43 @@
+/* static/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #788692;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%; /* Puedes ajustar el ancho según sea necesario */
+    max-width: 1200px; /* Establece un ancho máximo para la visualización en pantallas grandes */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: px;
+    text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+
+.logo {
+    width: 400px; /* Ajusta este valor según el tamaño deseado */
+    height: auto; /* Mantiene la proporción del logo */
+    margin-bottom: 20px; /* Espacio inferior para separar del contenido */
+}
+
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 15px 30px; /* Aumenta el tamaño del botón */
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 16px; /* Aumenta el tamaño del texto del botón */
+    border-radius: 5px; /* Opcional: agrega bordes redondeados a los botones */
+}
+
+button:hover {
+    background-color: #0056b3;
+}

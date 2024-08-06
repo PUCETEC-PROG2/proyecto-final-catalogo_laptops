@@ -21,7 +21,7 @@
             <!-- Enlace al listado de categorías -->
             <a href="#"><button>Categorías</button></a>
             <!-- Enlace al listado de productos -->
-            <a href="#"><button>Productos</button></a>
+            <a href="{% url 'producto_list' %}"><button>Productos</button></a>
             <!-- Enlace al listado de clientes -->
             <a href="{% url 'cliente_list' %}"><button>Clientes</button></a>
             <!-- Enlace al listado de compras -->
@@ -30,6 +30,7 @@
     </div>
 </body>
 </html>
+
 
 
 

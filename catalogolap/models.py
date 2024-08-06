@@ -18,4 +18,15 @@ class Cliente(models.Model):
 
 
 
+
+
+# Modelo para representar los productos
+class Producto(models.Model):
+    nombre = models.CharField(max_length=100)  # Campo para el nombre del producto
+    descripcion = models.TextField()  # Campo para la descripción del producto
+    precio = models.DecimalField(max_digits=10, decimal_places=2)  # Campo para el precio del producto
+    stock = models.IntegerField()  # Campo para la cantidad en stock del producto
+
+    def __str__(self):
+        return self.nombre  # Método para representar el objeto Producto como una cadena
 # Create your models here.

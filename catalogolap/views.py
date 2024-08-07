@@ -3,6 +3,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cliente, Producto  # Importa los modelos Cliente y Producto
 from .forms import ClienteForm, ProductoForm  # Importa los formularios de Cliente y Producto
+from .models import Categoria  # Importa el modelo Categoria
+from .forms import CategoriaForm  # Importa el formulario de Categoria
 
 # Vista para la página principal
 def index(request):
@@ -62,3 +64,32 @@ def producto_new(request):
     else:
         form = ProductoForm()  # Si no es un método POST, se crea un formulario vacío
     return render(request, 'producto_edit.html', {'form': form})  # Renderiza el formulario en la plantilla `producto_edit.html`
+
+# Vista para listar todas las categorías
+def categoria_list(request):
+    categorias = Categoria.objects.all()  # Obtiene todas las categorías de la base de datos
+    return render(request, 'categoria_list.html', {'categorias': categorias})  # Renderiza la plantilla `categoria_list.html` con las categorías
+
+# Vista para añadir una nueva categoría
+def categoria_new(request):
+    if request.method == "POST":  # Si el formulario se envía con un método POST
+        form = CategoriaForm(request.POST)  # Se crea una instancia del formulario con los datos del POST
+        if form.is_valid():  # Se valida el formulario
+            categoria = form.save(commit=False)  # Se guarda la categoría, pero no se guarda en la base de datos aún
+            categoria.save()  # Se guarda la categoría en la base de datos
+            return redirect('categoria_list')  # Redirige a la lista de categorías después de añadir una nueva
+    else:
+        form = CategoriaForm()  # Si no es un método POST, se crea un formulario vacío
+    return render(request, 'categoria_edit.html', {'form': form})  # Renderiza el formulario en la plantilla `categoria_edit.html`
+
+# Vista para editar una categoría existente
+def categoria_edit(request, pk):
+    categoria = get_object_or_404(Categoria, pk=pk)  # Obtiene la categoría por su clave primaria (pk) o muestra un error 404 si no se encuentra
+    if request.method == "POST":
+        form = CategoriaForm(request.POST, instance=categoria)  # Pasa el formulario con los datos existentes de la categoría
+        if form.is_valid():
+            form.save()  # Guarda los cambios del formulario
+            return redirect('categoria_list')  # Redirige a la lista de categorías después de editar
+    else:
+        form = CategoriaForm(instance=categoria)  # Carga el formulario con los datos actuales de la categoría
+    return render(request, 'categoria_edit.html', {'form': form})  # Renderiza el formulario de edición

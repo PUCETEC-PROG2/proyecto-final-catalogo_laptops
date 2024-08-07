@@ -1,0 +1,39 @@
+<!-- Archivo: catalogolap/templates/categoria_list.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Categorías</title>
+    {% load static %}
+    <!-- Enlaza el archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Categorías</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for categoria in categorias %}
+                    <tr>
+                        <td>{{ categoria.id }}</td>
+                        <td>{{ categoria.nombre }}</td>
+                        <td>
+                            <a href="{% url 'categoria_edit' categoria.id %}" class="btn btn-sm btn-primary">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'categoria_new' %}" class="btn btn-primary">Añadir Nueva Categoría</a>
+    </div>
+</body>
+</html>

@@ -30,3 +30,21 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre  # Método para representar el objeto Producto como una cadena
 # Create your models here.
+
+
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=100)  # Nombre de la categoría
+
+    def __str__(self):
+        return self.nombre  # Retorna el nombre de la categoría como representación en string
+    
+
+from django.db import models
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField(null=True, blank=True)  # Incluye este campo para la descripción
+
+    def __str__(self):
+        return self.nombre

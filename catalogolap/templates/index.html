@@ -18,8 +18,8 @@
         .btn-custom {
             background-color: #dce1e6; /* Fondo gris claro */
             color: #333; /* Color del texto */
-            font-size: 1.25rem; /* Tamaño de fuente más grande */
-            padding: 1rem; /* Tamaño de los botones más grande */
+            font-size: 4rem; /* Tamaño de fuente más grande */
+            padding: 5rem; /* Tamaño de los botones más grande */
             border-radius: 0.5rem; /* Bordes redondeados */
             display: flex;
             align-items: center;
@@ -34,7 +34,7 @@
         }
 
         .container {
-            margin-top: 2rem; /* Espacio superior del contenedor */
+            margin-top: 3rem; /* Espacio superior del contenedor */
         }
 
         .btn-container {
@@ -52,7 +52,7 @@
         <!-- Botones de navegación para las diferentes secciones del catálogo -->
         <div class="row row-cols-2 g-4">
             <div class="col d-flex align-items-stretch">
-                <a href="#" class="btn btn-custom flex-fill">
+                <a href="{% url 'categoria_list' %}" class="btn btn-custom flex-fill">
                     <i class="fa-solid fa-square"></i> Categorías
                 </a>
             </div>

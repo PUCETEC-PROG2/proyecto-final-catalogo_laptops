@@ -11,5 +11,7 @@ urlpatterns = [
     path('categorias/', views.categoria_list, name='categoria_list'),  # URL para la lista de categorías
     path('categorias/nuevo/', views.categoria_new, name='categoria_new'),  # URL para añadir una nueva categoría
     path('categorias/<int:pk>/editar/', views.categoria_edit, name='categoria_edit'),  # URL para editar una categoría existente
-    # Aquí puedes añadir las demás rutas para productos, categorías, etc.
+    path('compras/', views.compra_list, name='compra_list'),  # URL para la lista de compras
+    path('compras/nuevo/', views.compra_new, name='compra_new'),  # URL para añadir una nueva compra
+    path('compras/<int:pk>/editar/', views.compra_edit, name='compra_edit'),  # Editar compra existente
 ]

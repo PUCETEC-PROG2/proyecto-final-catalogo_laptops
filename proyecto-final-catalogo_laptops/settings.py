@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'catalogolap', #Creacion de la app ''catalogolap"
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'  # Cambia a 'bootstrap5' de Bootstrap 5
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

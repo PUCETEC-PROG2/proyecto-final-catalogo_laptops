@@ -48,3 +48,15 @@ class Categoria(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+
+class Compra(models.Model):
+    cliente = models.ForeignKey('Cliente', on_delete=models.CASCADE)  # Relación con Cliente
+    producto = models.ForeignKey('Producto', on_delete=models.CASCADE)  # Relación con Producto
+    categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE)  # Relación con Categoria
+    cantidad = models.PositiveIntegerField()  # Cantidad de productos comprados
+    total = models.DecimalField(max_digits=10, decimal_places=2)  # Total de la compra
+    fecha_compra = models.DateTimeField(auto_now_add=True)  # Fecha de la compra
+
+    def __str__(self):
+        return f'Compra de {self.cantidad} {self.producto.nombre} por {self.cliente.nombre}'

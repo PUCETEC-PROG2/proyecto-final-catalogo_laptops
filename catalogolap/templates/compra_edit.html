@@ -1,0 +1,39 @@
+<!-- Archivo: catalogolap/templates/compra_edit.html -->
+
+<!-- Archivo: catalogolap/templates/compra_edit.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Compra</title>
+    <!-- Carga el módulo para manejar archivos estáticos -->
+    {% load static %}
+    {% load crispy_forms_tags %}
+    <!-- Enlaza el archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ form.instance.id|default:"Nueva Compra" }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_cliente" class="form-label">Cliente:</label>
+                {{ form.cliente|as_crispy_field }}
+            </div>
+            <div class="mb-3">
+                <label for="id_producto" class="form-label">Producto:</label>
+                {{ form.producto|as_crispy_field }}
+            </div>
+            <div class="mb-3">
+                <label for="id_categoria" class="form-label">Categoría:</label>
+                {{ form.categoria|as_crispy_field }}
+            </div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a href="{% url 'compra_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

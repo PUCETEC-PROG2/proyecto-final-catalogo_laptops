@@ -1,0 +1,41 @@
+<!-- Archivo: catalogolap/templates/compra_list.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <!-- Enlaza el archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="{% load static %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Compras</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Fecha de Compra</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for compra in compras %}
+                    <tr>
+                        <td>{{ compra.id }}</td>
+                        <td>{{ compra.cliente.nombre }} {{ compra.cliente.apellido }}</td>
+                        <td>{{ compra.producto.nombre }}</td>
+                        <td>{{ compra.categoria.nombre }}</td>
+                        <td>{{ compra.fecha_compra }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'compra_new' %}" class="btn btn-primary">Añadir Nueva Compra</a>
+    </div>
+</body>
+</html>

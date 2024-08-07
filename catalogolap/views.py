@@ -1,10 +1,10 @@
 # Archivo: catalogolap/views.py
 
+# Archivo: catalogolap/views.py
+
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Cliente, Producto  # Importa los modelos Cliente y Producto
-from .forms import ClienteForm, ProductoForm  # Importa los formularios de Cliente y Producto
-from .models import Categoria  # Importa el modelo Categoria
-from .forms import CategoriaForm  # Importa el formulario de Categoria
+from .models import Cliente, Producto, Categoria, Compra  # Importa los modelos necesarios, incluyendo Compra
+from .forms import ClienteForm, ProductoForm, CategoriaForm, CompraForm  # Importa los formularios necesarios
 
 # Vista para la página principal
 def index(request):
@@ -27,9 +27,6 @@ def cliente_new(request):
         form = ClienteForm()  # Si es un GET, muestra un formulario vacío
     return render(request, 'cliente_edit.html', {'form': form})
 
-
-
-
 # Vista para editar un cliente existente
 def cliente_edit(request, pk):
     cliente = get_object_or_404(Cliente, pk=pk)  # Obtiene el cliente por su clave primaria (pk) o muestra un error 404 si no se encuentra
@@ -42,16 +39,10 @@ def cliente_edit(request, pk):
         form = ClienteForm(instance=cliente)  # Carga el formulario con los datos actuales del cliente
     return render(request, 'cliente_edit.html', {'form': form})  # Renderiza el formulario de edición
 
-
-
-
 # Vista para listar todos los productos
 def product_list(request):
     productos = Producto.objects.all()  # Obtiene todos los productos de la base de datos
-    return render(request, 'product_list.html', {'productos': productos})  # Renderiza la plantilla `producto_list.html` con los productos
-
-
-
+    return render(request, 'product_list.html', {'productos': productos})  # Renderiza la plantilla `product_list.html` con los productos
 
 # Vista para añadir un nuevo producto
 def producto_new(request):
@@ -93,3 +84,32 @@ def categoria_edit(request, pk):
     else:
         form = CategoriaForm(instance=categoria)  # Carga el formulario con los datos actuales de la categoría
     return render(request, 'categoria_edit.html', {'form': form})  # Renderiza el formulario de edición
+
+# Vista para listar todas las compras
+def compra_list(request):
+    compras = Compra.objects.all()  # Obtiene todas las compras de la base de datos
+    return render(request, 'compra_list.html', {'compras': compras})  # Renderiza la plantilla `compra_list.html` con las compras
+
+# Vista para añadir una nueva compra
+def compra_new(request):
+    if request.method == "POST":  # Si el formulario se envía con un método POST
+        form = CompraForm(request.POST)  # Se crea una instancia del formulario con los datos del POST
+        if form.is_valid():  # Se valida el formulario
+            compra = form.save(commit=False)  # Se guarda la compra, pero no se guarda en la base de datos aún
+            compra.save()  # Se guarda la compra en la base de datos
+            return redirect('compra_list')  # Redirige a la lista de compras después de añadir una nueva
+    else:
+        form = CompraForm()  # Si no es un método POST, se crea un formulario vacío
+    return render(request, 'compra_edit.html', {'form': form})  # Renderiza el formulario en la plantilla `compra_edit.html`
+
+# Vista para editar una compra existente
+def compra_edit(request, pk):
+    compra = get_object_or_404(Compra, pk=pk)  # Obtiene la compra por su clave primaria (pk) o muestra un error 404 si no se encuentra
+    if request.method == "POST":
+        form = CompraForm(request.POST, instance=compra)  # Pasa el formulario con los datos existentes de la compra
+        if form.is_valid():
+            form.save()  # Guarda los cambios del formulario
+            return redirect('compra_list')  # Redirige a la lista de compras después de editar
+    else:
+        form = CompraForm(instance=compra)  # Carga el formulario con los datos actuales de la compra
+    return render(request, 'compra_edit.html', {'form': form})  # Renderiza el formulario de edición

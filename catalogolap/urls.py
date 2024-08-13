@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.index, name='index'),  # Página principal
@@ -14,4 +15,6 @@ urlpatterns = [
     path('compras/', views.compra_list, name='compra_list'),  # URL para la lista de compras
     path('compras/nuevo/', views.compra_new, name='compra_new'),  # URL para añadir una nueva compra
     path('compras/<int:pk>/editar/', views.compra_edit, name='compra_edit'),  # Editar compra existente
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]

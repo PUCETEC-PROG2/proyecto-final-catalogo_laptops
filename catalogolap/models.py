@@ -60,3 +60,5 @@ class Compra(models.Model):
 
     def __str__(self):
         return f'Compra de {self.cantidad} {self.producto.nombre} por {self.cliente.nombre}'
+    
+

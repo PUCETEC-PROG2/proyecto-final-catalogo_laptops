@@ -1,0 +1,25 @@
+<!-- Archivo: catalogolap/templates/producto_confirm_delete.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Producto</title>
+    <!-- Carga el módulo para manejar archivos estáticos -->
+    {% load static %}
+    <!-- Enlaza el archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Eliminar Producto</h1>
+        <p>¿Estás seguro que deseas eliminar este producto?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'producto_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

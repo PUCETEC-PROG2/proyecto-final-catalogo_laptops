@@ -122,3 +122,11 @@ def compra_edit(request, pk):
     else:
         form = CompraForm(instance=compra)
     return render(request, 'compra_edit.html', {'form': form})
+
+@login_required
+def producto_delete(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+    if request.method == "POST":
+        producto.delete()
+        return redirect('producto_list')
+    return render(request, 'producto_confirm_delete.html', {'producto': producto})

@@ -17,10 +17,11 @@ Including another URLconf
 # Archivo: proyecto-final-catalogo_laptops/urls.py
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from catalogolap import views  # Importa las vistas de la aplicación 'catalogolap'
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # URL para el panel de administración
     path('', views.index, name='index'),  # URL para la página de inicio que renderiza 'index.html'
+    path('', include('catalogolap.urls')),  # Incluye las rutas de la aplicación 'catalogolap'
 ]

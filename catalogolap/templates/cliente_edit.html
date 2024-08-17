@@ -1,0 +1,63 @@
+<!-- Archivo: catalogolap/templates/cliente_edit.html -->
+<!-- Plantilla para añadir o editar un cliente -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Nuevo Cliente</title>
+    <!-- Enlace a Bootstrap CSS para aplicar estilos -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Título de la página -->
+        <h1 class="mb-4">Añadir Nuevo Cliente</h1>
+
+        <!-- Formulario estilizado con Bootstrap -->
+        <form method="post">
+            <!-- Protege el formulario contra ataques CSRF -->
+            {% csrf_token %}
+
+            <!-- Campo para la cédula del cliente -->
+            <div class="form-group">
+                <label for="id_cedula">Cédula:</label>
+                {{ form.cedula }}
+            </div>
+
+            <!-- Campo para el nombre del cliente -->
+            <div class="form-group">
+                <label for="id_nombre">Nombre:</label>
+                {{ form.nombre }}
+            </div>
+
+            <!-- Campo para el apellido del cliente -->
+            <div class="form-group">
+                <label for="id_apellido">Apellido:</label>
+                {{ form.apellido }}
+            </div>
+
+            <!-- Campo para el correo electrónico del cliente -->
+            <div class="form-group">
+                <label for="id_correo_electronico">Correo Electrónico:</label>
+                {{ form.correo_electronico }}
+            </div>
+
+            <!-- Campo para la dirección del cliente -->
+            <div class="form-group">
+                <label for="id_direccion">Dirección:</label>
+                {{ form.direccion }}
+            </div>
+
+            <!-- Botón para enviar el formulario -->
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+    </div>
+
+    <!-- Enlace a Bootstrap JS y dependencias para interactividad -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!-- Archivo: catalogolap/templates/cliente_list.html -->
+<!-- Plantilla para mostrar la lista de clientes -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <!-- Enlace a Bootstrap CSS para aplicar estilos -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Título de la página -->
+        <h1 class="my-4">Lista de Clientes</h1>
+
+        <!-- Tabla con estilos de Bootstrap para mostrar los clientes -->
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo Electrónico</th>
+                    <th>Dirección</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Itera sobre los clientes y crea una fila para cada uno -->
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.id_cliente }}</td>
+                    <td>{{ cliente.cedula }}</td>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellido }}</td>
+                    <td>{{ cliente.correo_electronico }}</td>
+                    <td>{{ cliente.direccion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Botón para añadir un nuevo cliente -->
+        <a href="{% url 'cliente_new' %}" class="btn btn-primary">Añadir Cliente</a>
+    </div>
+
+    <!-- Enlace a Bootstrap JS y dependencias para interactividad -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

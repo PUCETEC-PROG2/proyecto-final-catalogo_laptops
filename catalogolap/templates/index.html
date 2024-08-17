@@ -18,14 +18,19 @@
 
         <!-- Botones de navegación para las diferentes secciones del catálogo -->
         <div class="buttons">
-            <button>Categorías</button>
-            <button>Productos</button>
-            <button>Clientes</button>
-            <button>Compras</button>
+            <!-- Enlace al listado de categorías -->
+            <a href="#"><button>Categorías</button></a>
+            <!-- Enlace al listado de productos -->
+            <a href="#"><button>Productos</button></a>
+            <!-- Enlace al listado de clientes -->
+            <a href="{% url 'cliente_list' %}"><button>Clientes</button></a>
+            <!-- Enlace al listado de compras -->
+            <a href="#"><button>Compras</button></a>
         </div>
     </div>
 </body>
 </html>
+
 
 
 <!-- Archivo: catalogolap/templates/index.html -->
